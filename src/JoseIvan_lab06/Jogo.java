@@ -8,7 +8,7 @@ public abstract class Jogo {
 	
 	private String nome;
 	private double preco;
-	private int maiorScore;
+	protected int maiorScore;
 	private int qntVezesQueJogou;
 	private int qntVezesZerou;
 	private HashSet<Jogabilidade> modalidades;
@@ -34,8 +34,8 @@ public abstract class Jogo {
 	public abstract int registraJogada(int score, boolean zerouJogo);
 		
 	
-	public void incrementaQntQueZerou() {
-		this.qntVezesZerou +=1;
+	public int incrementaQntQueZerou() {
+		return this.qntVezesZerou +=1;
 	}
 
 	public String getNome() {

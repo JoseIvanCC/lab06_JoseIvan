@@ -12,12 +12,11 @@ public class Veterano extends Usuario {
 		PONTOS = 15;
 	}
 	
-	public void comprarJogo(String nome, double preco) throws Exception {
-		Jogo jogo = new Jogo(nome, preco);
-		super.qntDinheiro -= preco * DESCONTO;
+	public boolean comprarJogo(Jogo jogo, double preco) throws Exception {
+		preco -= preco * DESCONTO;
 		x2pPontos += PONTOS * (int) preco;
-		super.meusJogos.add(jogo);
-	}
-	
+		return super.comprarJogo(jogo, preco);
+		
+		}
 
 }
