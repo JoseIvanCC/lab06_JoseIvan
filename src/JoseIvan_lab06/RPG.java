@@ -6,7 +6,16 @@ public class RPG extends Jogo {
 		super(nome, preco);
 	}
 	
-
+	public registraJogada(int score, boolean zerouJogo){
+	if (score > maiorScore) {
+		this.maiorScore = score;
+	}
+	
+	if (zerouJogo) {
+		 return incrementaQntQueZerou();
+	}
+	
+	}
 	
 
 }
