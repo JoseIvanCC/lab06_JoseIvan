@@ -13,10 +13,21 @@ public class Veterano extends Usuario {
 	}
 	
 	public boolean comprarJogo(Jogo jogo, double preco) throws Exception {
-		preco -= preco * DESCONTO;
 		x2pPontos += PONTOS * (int) preco;
-		return super.comprarJogo(jogo, preco);
+		preco -= preco * DESCONTO;
+		
+		super.qntDinheiro -= preco;
+
+		this.meusJogos.add(jogo);
+
+		return true;
 		
 		}
+	
+	public String toString() {
+		
+		return super.getNomeLogin() + "%n" + super.getNome() + " - Jogador Veterano";
+		
+	}
 
 }

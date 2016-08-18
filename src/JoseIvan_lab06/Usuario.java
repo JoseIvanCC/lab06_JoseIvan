@@ -2,7 +2,7 @@ package JoseIvan_lab06;
 
 import java.util.HashSet;
 
-public class Usuario {
+public abstract class Usuario {
 
 	private String nome;
 	private String nomeLogin;
@@ -23,13 +23,42 @@ public class Usuario {
 		this.qntDinheiro += valor;
 	}
 
-	public boolean comprarJogo(Jogo jogo, double preco) throws Exception {
-		
-			this.qntDinheiro -= preco;
+	public abstract boolean comprarJogo(Jogo jogo, double preco) throws Exception;
+	
+	public void descontaDinheiro(double preco) {
+		this.qntDinheiro -= preco;
+	}
 
-			this.meusJogos.add(jogo);
+	public String getNome() {
+		return nome;
+	}
 
-			return true;
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getNomeLogin() {
+		return nomeLogin;
+	}
+
+	public void setNomeLogin(String nomeLogin) {
+		this.nomeLogin = nomeLogin;
+	}
+
+	public HashSet<Jogo> getMeusJogos() {
+		return meusJogos;
+	}
+
+	public void setMeusJogos(HashSet<Jogo> meusJogos) {
+		this.meusJogos = meusJogos;
+	}
+
+	public int getX2pPontos() {
+		return x2pPontos;
+	}
+
+	public void setX2pPontos(int x2pPontos) {
+		this.x2pPontos = x2pPontos;
 	}
 
 	public void registraJogada(String nomeDoJogo, int score, boolean zerouJogo) {

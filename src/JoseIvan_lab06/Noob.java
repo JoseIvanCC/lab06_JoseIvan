@@ -13,10 +13,21 @@ public class Noob extends Usuario {
 	}
 
 	public boolean comprarJogo(Jogo jogo, double preco) throws Exception {
-		preco -= preco * DESCONTO;
 		x2pPontos += PONTOS * (int) preco;
-		return super.comprarJogo(jogo, preco);
+		preco -= preco * DESCONTO;
+		
+		super.descontaDinheiro(preco);
+
+		this.meusJogos.add(jogo);
+
+		return true;
 
 	}
-
+	
+	public String toString() {
+		
+		return super.getNomeLogin() + "%n" + super.getNome() + " - Jogador Noob";
+		
+	}
+	
 }

@@ -12,13 +12,26 @@ public class Fachada {
 		usuarios = new HashMap<>();
 	}
 
-	public boolean adicionaUsuarios(String nomeLogin, String nome, String loginUsuario) {
+	public boolean adicionaUsuarios(String nomeLogin, String nome, String loginUsuario, String tipoUsuario) {
 		try{
 		if (usuarios.containsKey(nomeLogin)) {
 			return false;
 		} else {
-			Usuario usuario = new Usuario(nome, loginUsuario);
-			usuarios.put(nomeLogin, usuario);
+			Usuario usuario = null;
+			
+			if (tipoUsuario.equalsIgnoreCase("Noob")) {
+				usuario = new Noob(nome, loginUsuario);
+			}
+	
+			else if (tipoUsuario.equalsIgnoreCase("Veterano")) {
+				usuario = new Veterano(nome, loginUsuario);
+				
+			}else{
+				return false;
+			}
+			
+			this.usuarios.put(nomeLogin, usuario);
+			
 			return true;
 		}
 		
@@ -112,4 +125,14 @@ public class Fachada {
 		}
 
 	}
-}
+	
+	public String toString() {
+		String mensagem = "=== Central P2-CG ===%n";
+		
+		for (int i = 0; i < usuarios.size(); i++){
+			
+		}
+		 
+			
+		}
+	}

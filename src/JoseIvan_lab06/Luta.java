@@ -25,4 +25,11 @@ public class Luta extends Jogo {
 		return x2pPontos;
 	}
 	
+public String toString() {
+		
+		return "+ " + super.getNome() + " - Luta%n" + "==> Jogou " + super.getQntVezesQueJogou() + " vez(es)%n" +
+	"==> Zerou " + super.getQntVezesZerou() + " vez(es)%n" + "==> Maior score: " + super.getMaiorScore() + 
+	"%nTotal de preço dos jogos: R$ " + super.getPreco() + "%n--------------------------------------------";
+	}
+
 }
