@@ -24,30 +24,32 @@ public class UsuarioTest {
 	public void setUp() throws Exception {
 		this.veterano = new Veterano("Jose Ivan", "jose.ivan");
 		this.noob = new Noob("Luan Rocha", "luan.rocha");
-		this.RPG = new RPG("LOL", 10.0);
-		this.luta = new Luta("Teken 3", 20.0);
+		this.RPG = new RPG("LOL", 200.0);
+		this.luta = new Luta("Teken 3",100.0);
 	}
 
 	@Test
-	public void testDepositaDinheiro() throws Exception {
+	public void testCompraERegistroJogada() throws Exception {
 		veterano.depositaDinheiro(1000.0);
-		noob.depositaDinheiro(2.000);
+		noob.depositaDinheiro(2000.0);
 
-		veterano.comprarJogo(RPG, 100.0);
-		noob.comprarJogo(luta, 200.0);
+		veterano.comprarJogo(luta, 100.0);
+		noob.comprarJogo(RPG, 200.0);
 
-		assertEquals(1920, veterano.getQntDinheiro(), 0);
-		assertEquals(1820, noob.getQntDinheiro(), 0);
+		assertEquals(920.0, veterano.getQntDinheiro(), 0);
+		assertEquals(1820.0, noob.getQntDinheiro(), 0);
 
-		noob.registraJogada("Bomba Patch 5.1", 100, true);
+		noob.registraJogada("LOL", 100, true);
+		
+		
 		assertEquals(1, RPG.getQntVezesZerou());
 		assertEquals(1, RPG.getQntVezesQueJogou());
 		assertEquals(100, RPG.getMaiorScore());
 
-		noob.registraJogada("Stuart Litlle - o rato ataca", 80, false);
-		assertEquals(1, RPG.getQntVezesZerou());
-		assertEquals(2, RPG.getQntVezesQueJogou());
-		assertEquals(100, RPG.getMaiorScore());
+		veterano.registraJogada("Teken 3", 80, false);
+		assertEquals(0, luta.getQntVezesZerou());
+		assertEquals(1, luta.getQntVezesQueJogou());
+		assertEquals(80, luta.getMaiorScore());
 
 	}
 
@@ -82,9 +84,7 @@ public class UsuarioTest {
 			fail();
 
 		} catch (Exception e) {
-			assertEquals(
-					"Login do usuario nao pode ser existente, vazio ou nulo.",
-					e.getMessage());
+			assertEquals("Login do usuario nao pode ser vazio ou nulo.", e.getMessage());
 
 		}
 
@@ -93,8 +93,7 @@ public class UsuarioTest {
 			Usuario usuarioInvalido3 = new Noob("  ", "carlos.silva");
 			fail();
 		} catch (Exception e) {
-			assertEquals("Nome do usuario nao pode ser vazio ou nulo.",
-					e.getMessage());
+			assertEquals("Nome do usuario nao pode ser vazio ou nulo.", e.getMessage());
 		}
 
 		try {
@@ -103,7 +102,7 @@ public class UsuarioTest {
 			fail();
 
 		} catch (Exception e) {
-			assertEquals("Login do usuario nao pode ser existente, vazio ou nulo.", e.getMessage());
+			assertEquals("Login do usuario nao pode ser vazio ou nulo.", e.getMessage());
 
 		}
 

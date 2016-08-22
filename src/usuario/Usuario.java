@@ -18,7 +18,7 @@ public abstract class Usuario {
 		}
 		
 		if (nomeLogin.trim().isEmpty()){
-			throw new Exception("Login do usuario nao pode ser existente, vazio ou nulo.");
+			throw new Exception("Login do usuario nao pode ser vazio ou nulo.");
 		}
 
 		this.nome = nome;

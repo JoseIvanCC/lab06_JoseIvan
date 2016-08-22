@@ -48,10 +48,20 @@ public abstract class Jogo {
 	 * @return
 	 */
 	public abstract int registraJogada(int score, boolean zerouJogo);
-		
 	
-	public int incrementaQntQueZerou() {
-		return this.qntVezesZerou +=1;
+	public boolean addJogabilidade(Jogabilidade modo){
+		return this.modalidades.add(modo);
+	}
+	
+	public HashSet<Jogabilidade> getModalidades() {
+		return modalidades;
+	}
+	public void setModalidades(HashSet<Jogabilidade> modalidades) {
+		this.modalidades = modalidades;
+	}
+	
+	public void incrementaQntQueZerou() {
+		this.qntVezesZerou +=1;
 	}
 
 	public String getNome() {
@@ -87,7 +97,7 @@ public abstract class Jogo {
 	}
 
 	public int getQntVezesZerou() {
-		return qntVezesZerou;
+		return this.qntVezesZerou;
 	}
 	@Override
 	public int hashCode() {
@@ -117,9 +127,6 @@ public abstract class Jogo {
 			return false;
 		}
 	}
-	
-	
-
 	
 	
 	

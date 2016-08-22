@@ -11,8 +11,11 @@ public class Plataforma extends Jogo{
 	}
 	
 	public int registraJogada(int score, boolean zerouJogo) {
+		super.setQntVezesQueJogou();
+		
 		if (zerouJogo) {
 			x2pPontos += 20;
+			super.incrementaQntQueZerou();
 		}
 		
 		return x2pPontos;

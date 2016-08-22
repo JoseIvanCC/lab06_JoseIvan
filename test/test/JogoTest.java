@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import enums.Jogabilidade;
 import jogo.Jogo;
 import jogo.Luta;
 import jogo.Plataforma;
@@ -38,6 +39,12 @@ public class JogoTest {
 		assertEquals(1, luta.getQntVezesQueJogou());
 		luta.registraJogada(8, false);
 		assertEquals(20, luta.getMaiorScore());
+	}
+	
+	@Test
+	public void testJogabilidade() throws Exception{
+		plataforma.addJogabilidade(Jogabilidade.OFFLINE);
+		assertTrue(plataforma.getModalidades().contains(Jogabilidade.OFFLINE));
 	}
 	
 	@Test

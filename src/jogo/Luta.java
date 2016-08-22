@@ -14,8 +14,10 @@ public class Luta extends Jogo {
 
 	
 	public int registraJogada(int score, boolean zerouJogo) {
+		
+		super.setQntVezesQueJogou();
 		if (score > super.maiorScore) {
-			super.maiorScore = score;
+			super.setMaiorScore(score);
 			x2pPontos = score / SCORE_POR_PONTO;
 		}
 		
