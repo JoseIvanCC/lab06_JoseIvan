@@ -7,7 +7,7 @@ public class Veterano extends Usuario {
 	private final double DESCONTO;
 	private final int PONTOS;
 	
-	public Veterano(String nome, String nomeLogin) {
+	public Veterano(String nome, String nomeLogin) throws Exception {
 		super(nome, nomeLogin);
 		DESCONTO = 0.20;
 		super.x2pPontos = 1000;

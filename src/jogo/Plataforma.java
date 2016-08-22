@@ -25,27 +25,4 @@ public class Plataforma extends Jogo{
 	"==> Zerou " + super.getQntVezesZerou() + " vez(es)%n" + "==> Maior score: %n" + super.getMaiorScore();
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + x2pPontos;
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (!super.equals(obj))
-			return false;
-		if (!(obj instanceof Plataforma))
-			return false;
-		Plataforma other = (Plataforma) obj;
-		if (x2pPontos != other.x2pPontos)
-			return false;
-		return true;
-	}
-
-
 }

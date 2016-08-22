@@ -22,7 +22,7 @@ public abstract class Jogo {
 	 * O construtor Jogo inicializa os atributos nome, preço, maior score, quantas vezes jogou e quantas vezes zerou do objeto.
 	 * @param nome Define o nome do jogo.
 	 * @param preco Define o preco do jogo.
-	 * @throws Exception Vacina a criacao do meu objeto contra nome vazio e preço menor ou igual a zero.
+	 * @throws Exception Protege a criacao do meu objeto contra nome vazio e preço menor ou igual a zero.
 	 */
 	public Jogo(String nome, double preco) throws Exception{
 		
@@ -101,33 +101,27 @@ public abstract class Jogo {
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		return result;
 	}
-
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
+		if (obj instanceof Jogo) {
+			Jogo jogo = (Jogo) obj;
+			if (jogo.getNome().equalsIgnoreCase(this.getNome())) {
+				if (jogo.getPreco() == this.getPreco()) {
+					return true;
+				}
+
+			}
 			return false;
-		if (getClass() != obj.getClass())
+
+		} else {
 			return false;
-		Jogo other = (Jogo) obj;
-		if (modalidades == null) {
-			if (other.modalidades != null)
-				return false;
-		} else if (!modalidades.equals(other.modalidades))
-			return false;
-		if (nome == null) {
-			if (other.nome != null)
-				return false;
-		} else if (!nome.equals(other.nome))
-			return false;
-		if (Double.doubleToLongBits(preco) != Double
-				.doubleToLongBits(other.preco))
-			return false;
-		return true;
+		}
 	}
+	
+	
 
 	
 	
 	
 }
+

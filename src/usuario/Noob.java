@@ -7,7 +7,8 @@ public class Noob extends Usuario {
 	private final double DESCONTO;
 	private final int PONTOS;
 
-	public Noob(String nome, String nomeLogin) {
+	public Noob(String nome, String nomeLogin) throws Exception {
+		
 		super(nome, nomeLogin);
 		DESCONTO = 0.10;
 		super.x2pPontos = 0;

@@ -12,7 +12,14 @@ public abstract class Usuario {
 	protected double qntDinheiro;
 	protected int x2pPontos;
 
-	public Usuario(String nome, String nomeLogin) {
+	public Usuario(String nome, String nomeLogin) throws Exception{
+		if (nome.trim().isEmpty()){
+			throw new Exception("Nome do usuario nao pode ser vazio ou nulo.");
+		}
+		
+		if (nomeLogin.trim().isEmpty()){
+			throw new Exception("Login do usuario nao pode ser existente, vazio ou nulo.");
+		}
 
 		this.nome = nome;
 		this.nomeLogin = nomeLogin;
@@ -94,25 +101,20 @@ public abstract class Usuario {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
+		if (obj instanceof Usuario){
+			Usuario usuario = (Usuario) obj;
+			if (usuario.getNome().equalsIgnoreCase(this.getNome())){
+				if (usuario.nomeLogin.equalsIgnoreCase(this.nomeLogin)){
+					return true;
+				}
+				
+			}
 			return false;
-		if (!(obj instanceof Usuario))
+				
+		}else{
 			return false;
-		Usuario other = (Usuario) obj;
-		if (meusJogos == null) {
-			if (other.meusJogos != null)
-				return false;
-		} else if (!meusJogos.equals(other.meusJogos))
-			return false;
-		if (nomeLogin == null) {
-			if (other.nomeLogin != null)
-				return false;
-		} else if (!nomeLogin.equals(other.nomeLogin))
-			return false;
-		return true;
-	}
+		}
+}
 
 
 	public abstract String toString();
