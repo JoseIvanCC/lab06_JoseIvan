@@ -1,8 +1,19 @@
 package jogo;
 
-
+/**
+ * Classe que cria o jogo.
+ * @author joseiscj
+ *
+ */
 public class JogoFactory {
-	
+	/**
+	 * Construtor que cria os jogos respectivos ao seu tipo.
+	 * @param nome Nome do jogo.
+	 * @param preco Preco do jogo.
+	 * @param tipo Tipo do jogo.
+	 * @return Retorno Retorna o jogo criado.
+	 * @throws Exception Nao permite a criacao de um jogo diferente de RPGB, plataforma ou luta.
+	 */
 	public Jogo criaJogo(String nome, double preco, String tipo) throws Exception{
 		
 		Jogo jogo;

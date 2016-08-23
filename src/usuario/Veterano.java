@@ -2,11 +2,22 @@ package usuario;
 
 import jogo.Jogo;
 
+/**
+ * Classe do usuário veterano, executando as suas compras de acordo com seu desconto e calculando seu x2pPontos.
+ * @author joseiscj
+ *
+ */
 public class Veterano extends Usuario {
 	
 	private final double DESCONTO;
 	private final int PONTOS;
 	
+/**
+ * Construtor que inicializa o desconto e os pontos. 
+ * @param nome Nome do usuario veterano.
+ * @param nomeLogin Login do usuario veterano.
+ * @throws Exception Nao permite a criacao de um usuario noob com nome ou login vazios ou nulos.
+ */
 	public Veterano(String nome, String nomeLogin) throws Exception {
 		super(nome, nomeLogin);
 		DESCONTO = 0.20;
@@ -14,6 +25,9 @@ public class Veterano extends Usuario {
 		PONTOS = 15;
 	}
 	
+/**
+ * Metodo que compra o jogo pelo usuario, levando em consideracao o desconto respectivo.
+ */
 	public boolean comprarJogo(Jogo jogo, double preco) throws Exception {
 		x2pPontos += PONTOS * (int) preco;
 		preco -= preco * DESCONTO;
@@ -25,7 +39,10 @@ public class Veterano extends Usuario {
 		return true;
 		
 		}
-	
+
+	/**
+	 * Representacao da mensagem de veterano.
+	 */
 	public String toString() {
 		
 		double precoTotal = 0;

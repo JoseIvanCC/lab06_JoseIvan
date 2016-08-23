@@ -1,6 +1,10 @@
 package usuario;
 
-
+/**
+ * Classe que cria o usuario.
+ * @author joseiscj
+ *
+ */
 public class UsuarioFactory {
 	
 	public Usuario criaUsuario(String nomeLogin, String nome, String tipoUsuario) throws Exception{

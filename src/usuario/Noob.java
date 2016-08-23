@@ -2,11 +2,21 @@ package usuario;
 
 import jogo.Jogo;
 
+/**
+ * Classe do usuário noob, executando as suas compras de acordo com seu desconto e calculando seu x2pPontos.
+ * @author joseiscj
+ *
+ */
 public class Noob extends Usuario {
 
 	private final double DESCONTO;
 	private final int PONTOS;
-
+/**
+ * Construtor que inicializa o desconto e os pontos. 
+ * @param nome Nome do usuario
+ * @param nomeLogin Login do usuario
+ * @throws Exception Nao permite a criacao de um usuario noob com nome ou login vazios ou nulos.
+ */
 	public Noob(String nome, String nomeLogin) throws Exception {
 		
 		super(nome, nomeLogin);
@@ -14,7 +24,9 @@ public class Noob extends Usuario {
 		super.x2pPontos = 0;
 		PONTOS = 10;
 	}
-
+/**
+ * Metodo que compra o jogo pelo usuario, levando em consideracao o desconto respectivo. 
+ */
 	public boolean comprarJogo(Jogo jogo, double preco) throws Exception {
 		x2pPontos += PONTOS * (int) preco;
 		preco -= preco * DESCONTO;
@@ -27,6 +39,9 @@ public class Noob extends Usuario {
 
 	}
 
+	/**
+	 * Representacao da mensagem de noob.
+	 */
 	public String toString() {
 		
 		double precoTotal = 0;

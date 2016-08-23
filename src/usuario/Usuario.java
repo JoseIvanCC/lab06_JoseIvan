@@ -4,6 +4,11 @@ import java.util.HashSet;
 
 import jogo.Jogo;
 
+/**
+ * Classe que passa todas as informacoes do usuario, bem como seus metodos de compra e deposito.
+ * @author joseiscj
+ *
+ */
 public abstract class Usuario {
 
 	private String nome;
@@ -12,6 +17,12 @@ public abstract class Usuario {
 	protected double qntDinheiro;
 	protected int x2pPontos;
 
+	/**
+	 * Construtor que inicializa os atributos de usuario.
+	 * @param nome Nome do usuario.
+	 * @param nomeLogin Login do usuario.
+	 * @throws Exception Nao permite a criacao de um usuario com nome ou login vazio ou nulo.
+	 */
 	public Usuario(String nome, String nomeLogin) throws Exception{
 		if (nome.trim().isEmpty()){
 			throw new Exception("Nome do usuario nao pode ser vazio ou nulo.");
@@ -27,13 +38,26 @@ public abstract class Usuario {
 		this.qntDinheiro = 0;
 		this.x2pPontos = 0;
 	}
-
+/**
+ * Metodo que deposita dinheiro na conta do usuario.
+ * @param valor Dinheiro a ser adicionado.
+ */
 	public void depositaDinheiro(double valor) {
 		this.qntDinheiro += valor;
 	}
-
+/**
+ * Metodo que compra o jogo pelo usuario. 
+ * @param jogo Jogo a ser comprado.
+ * @param preco Preco do respectivo jogo.
+ * @return Retorno true se o jogo foi comprado e false se não.
+ * @throws Exception Nao permite a compra de um jogo vazio ou nulo ou de um preco menor ou igual a zero.
+ */
 	public abstract boolean comprarJogo(Jogo jogo, double preco) throws Exception;
 	
+	/** 
+	 * Metodo que desconta dinheiro do usuario.
+	 * @param preco
+	 */
 	public void descontaDinheiro(double preco) {
 		this.qntDinheiro -= preco;
 	}
@@ -69,7 +93,12 @@ public abstract class Usuario {
 	public void setX2pPontos(int x2pPontos) {
 		this.x2pPontos = x2pPontos;
 	}
-
+/**
+ * Metodo que registra a jogada feita pelo usuario.
+ * @param nomeDoJogo Jogo que foi jogado.
+ * @param score Quantidade de score do jogo.
+ * @param zerouJogo Verifica se zerou o jogo ou não.
+ */
 	public void registraJogada(String nomeDoJogo, int score, boolean zerouJogo) {
 
 		for (Jogo jogo : meusJogos) {
@@ -116,7 +145,9 @@ public abstract class Usuario {
 		}
 }
 
-
+/**
+ *  Representacao da mensagem do usuario.
+ */
 	public abstract String toString();
 
 }
