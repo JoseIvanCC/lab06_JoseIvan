@@ -12,7 +12,7 @@ public class JogoFactory {
 	 * @param preco Preco do jogo.
 	 * @param tipo Tipo do jogo.
 	 * @return Retorno Retorna o jogo criado.
-	 * @throws Exception Nao permite a criacao de um jogo diferente de RPGB, plataforma ou luta.
+	 * @throws Exception Nao permite a criacao de um jogo diferente de RPG, plataforma ou luta.
 	 */
 	public Jogo criaJogo(String nome, double preco, String tipo) throws Exception{
 		

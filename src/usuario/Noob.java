@@ -1,5 +1,7 @@
 package usuario;
 
+/* 115210700 - José Ivan Silva da Cruz Júnior: LAB 06 - Turma 3 */
+
 import jogo.Jogo;
 
 /**
@@ -9,8 +11,9 @@ import jogo.Jogo;
  */
 public class Noob extends Usuario {
 
-	private final double DESCONTO;
-	private final int PONTOS;
+	private final double DESCONTO = 0.10;
+	private final int PONTOS = 10;
+	
 /**
  * Construtor que inicializa o desconto e os pontos. 
  * @param nome Nome do usuario
@@ -20,18 +23,17 @@ public class Noob extends Usuario {
 	public Noob(String nome, String nomeLogin) throws Exception {
 		
 		super(nome, nomeLogin);
-		DESCONTO = 0.10;
 		super.x2pPontos = 0;
-		PONTOS = 10;
 	}
 /**
  * Metodo que compra o jogo pelo usuario, levando em consideracao o desconto respectivo. 
  */
 	public boolean comprarJogo(Jogo jogo, double preco) throws Exception {
 		x2pPontos += PONTOS * (int) preco;
-		preco -= preco * DESCONTO;
+		double desconto = preco * DESCONTO;
+		double novoPreco = preco - desconto; 
 
-		super.descontaDinheiro(preco);
+		setQntDinheiro(novoPreco);
 
 		this.meusJogos.add(jogo);
 
@@ -46,13 +48,13 @@ public class Noob extends Usuario {
 		
 		double precoTotal = 0;
 		
-		String mensagem = super.getNomeLogin() + "%n" + super.getNome() + " - Jogador Noob";
+		String mensagem = super.getNomeLogin() + "\n" + super.getNome() + " - Jogador Noob";
 		for (Jogo jogo : super.meusJogos) {
 			mensagem += jogo.toString();
 			precoTotal += jogo.getPreco();
 		}
 		
-		mensagem += "Total de preço dos jogos: R$ %n" + precoTotal + "--------------------------------------------";
+		mensagem += "\nTotal de preço dos jogos: R$ " + precoTotal + "\n--------------------------------------------";
 
 		return mensagem;
 	}

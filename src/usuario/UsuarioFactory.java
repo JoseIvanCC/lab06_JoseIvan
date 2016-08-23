@@ -6,6 +6,14 @@ package usuario;
  *
  */
 public class UsuarioFactory {
+	/**
+	 * Construtor que cria os usuarios respectivos ao seu tipo.
+	 * @param nomeLogin Login do usuario.
+	 * @param nome Nome do usuario.
+	 * @param tipoUsuario Tipo do usuario.
+	 * @return Retorna o usuario criado.
+	 * @throws Exception Nao permite a criacao de um usuario que nao seja noob ou veterano.
+	 */
 	
 	public Usuario criaUsuario(String nomeLogin, String nome, String tipoUsuario) throws Exception{
 		

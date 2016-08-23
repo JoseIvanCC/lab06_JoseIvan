@@ -9,8 +9,8 @@ import jogo.Jogo;
  */
 public class Veterano extends Usuario {
 	
-	private final double DESCONTO;
-	private final int PONTOS;
+	private final double DESCONTO = 0.20;
+	private final int PONTOS = 15;
 	
 /**
  * Construtor que inicializa o desconto e os pontos. 
@@ -20,9 +20,9 @@ public class Veterano extends Usuario {
  */
 	public Veterano(String nome, String nomeLogin) throws Exception {
 		super(nome, nomeLogin);
-		DESCONTO = 0.20;
+		
 		super.x2pPontos = 1000;
-		PONTOS = 15;
+		
 	}
 	
 /**
@@ -30,9 +30,10 @@ public class Veterano extends Usuario {
  */
 	public boolean comprarJogo(Jogo jogo, double preco) throws Exception {
 		x2pPontos += PONTOS * (int) preco;
-		preco -= preco * DESCONTO;
-		
-		super.qntDinheiro -= preco;
+		double desconto = preco * DESCONTO;
+		double novoPreco = preco - desconto; 
+
+		setQntDinheiro(novoPreco);
 
 		this.meusJogos.add(jogo);
 
@@ -47,13 +48,13 @@ public class Veterano extends Usuario {
 		
 		double precoTotal = 0;
 	
-		String mensagem = super.getNomeLogin() + "%n" + super.getNome() + " - Jogador Veterano";
+		String mensagem = super.getNomeLogin() + "\n" + super.getNome() + " - Jogador Veterano";
 		for (Jogo jogo : super.meusJogos) {
 			mensagem += jogo.toString();
 			precoTotal += jogo.getPreco();
 		}
 		
-		mensagem += "Total de preço dos jogos: R$ %n" + precoTotal + "--------------------------------------------";
+		mensagem += "\nTotal de preço dos jogos: R$ " + precoTotal + "\n--------------------------------------------";
 		
 		return mensagem;
 	}

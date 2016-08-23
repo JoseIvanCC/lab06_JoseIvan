@@ -1,9 +1,11 @@
 package jogo;
 
+/* 115210700 - José Ivan Silva da Cruz Júnior: LAB 06 - Turma 3 */
+
 import java.util.HashSet;
 
 import enums.Jogabilidade;
-import exceptions.NuloVazio;
+import exceptions.NuloVazioException;
 /**
  * A classe passa as informacoes do jogo e define o comportamento de registrar a jogada para o objeto.
  * @author joseiscj
@@ -27,7 +29,7 @@ public abstract class Jogo {
 	public Jogo(String nome, double preco) throws Exception{
 		
 		if (nome.trim().isEmpty()) {
-			throw new NuloVazio("Nome nao pode ser vazio ou nulo.");
+			throw new NuloVazioException("Nome nao pode ser vazio ou nulo.");
 		}
 		
 		if (preco <= 0) {

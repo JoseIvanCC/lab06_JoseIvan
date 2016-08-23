@@ -40,8 +40,8 @@ public class Plataforma extends Jogo{
 	 */
 	public String toString() {
 		
-		return "+ " + super.getNome() + " - Plataforma:%n" + "==> Jogou " + super.getQntVezesQueJogou() + " vez(es)%n" +
-	"==> Zerou " + super.getQntVezesZerou() + " vez(es)%n" + "==> Maior score: %n" + super.getMaiorScore();
+		return "\nLista de Jogos: \n+ " + super.getNome() + " - Plataforma:\n" + "==> Jogou " + super.getQntVezesQueJogou() + " vez(es)\n" +
+	"==> Zerou " + super.getQntVezesZerou() + " vez(es)\n" + "==> Maior score: " + super.getMaiorScore();
 	}
 
 }

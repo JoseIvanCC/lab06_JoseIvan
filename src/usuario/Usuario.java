@@ -1,7 +1,11 @@
 package usuario;
 
+/* 115210700 - José Ivan Silva da Cruz Júnior: LAB 06 - Turma 3 */
+
 import java.util.HashSet;
 
+import exceptions.LoginVazioException;
+import exceptions.NuloVazioException;
 import jogo.Jogo;
 
 /**
@@ -23,13 +27,13 @@ public abstract class Usuario {
 	 * @param nomeLogin Login do usuario.
 	 * @throws Exception Nao permite a criacao de um usuario com nome ou login vazio ou nulo.
 	 */
-	public Usuario(String nome, String nomeLogin) throws Exception{
+	public Usuario(String nome, String nomeLogin) throws NuloVazioException,LoginVazioException{
 		if (nome.trim().isEmpty()){
-			throw new Exception("Nome do usuario nao pode ser vazio ou nulo.");
+			throw new NuloVazioException("Nome do usuario nao pode ser vazio ou nulo.");
 		}
 		
 		if (nomeLogin.trim().isEmpty()){
-			throw new Exception("Login do usuario nao pode ser vazio ou nulo.");
+			throw new LoginVazioException("Login do usuario nao pode ser vazio ou nulo.");
 		}
 
 		this.nome = nome;
@@ -45,6 +49,34 @@ public abstract class Usuario {
 	public void depositaDinheiro(double valor) {
 		this.qntDinheiro += valor;
 	}
+	
+	/**
+	 * Metodo que verifica a existencia do jogo na loja.
+	 * @param nome Nome do jogo a ser verificado.
+	 * @return Se o jogo existir, retorna o respectivo jogo.
+	 */
+	public Jogo getJogo(String nome) {
+		for (Jogo jogo : meusJogos) {
+			if (jogo.getNome().equalsIgnoreCase(nome)) {
+				return jogo;
+			}
+		}
+		return null;
+	}
+	
+	/**
+	 * Metodo que verifica se um jogo existe na minha loja.
+	 * @param nome Nome do jogo a ser comprado.
+	 * @return Retorno true se o jogo existe e false se o mesmo não existe.
+	 */
+	public boolean contemJogo(String nome) {
+		for (Jogo jogo : meusJogos) {
+			if (jogo.getNome().equalsIgnoreCase(nome)) {
+				return true;
+			}
+		}
+		return false;
+	}
 /**
  * Metodo que compra o jogo pelo usuario. 
  * @param jogo Jogo a ser comprado.
@@ -53,6 +85,10 @@ public abstract class Usuario {
  * @throws Exception Nao permite a compra de um jogo vazio ou nulo ou de um preco menor ou igual a zero.
  */
 	public abstract boolean comprarJogo(Jogo jogo, double preco) throws Exception;
+	
+	public void addJogo(Jogo jogo){
+		meusJogos.add(jogo);
+	}
 	
 	/** 
 	 * Metodo que desconta dinheiro do usuario.
@@ -114,7 +150,7 @@ public abstract class Usuario {
 	}
 	
 	public void setQntDinheiro(double qntDinheiro) {
-		this.qntDinheiro = qntDinheiro;
+		this.qntDinheiro -= qntDinheiro;
 	}
 	
 	@Override

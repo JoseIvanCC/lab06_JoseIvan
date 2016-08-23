@@ -42,8 +42,8 @@ public class RPG extends Jogo {
 	 */
 	public String toString() {
 
-		return "+ " + super.getNome() + " - RPG:%n" + "==> Jogou " + super.getQntVezesQueJogou() + " vez(es)%n"
-				+ "==> Zerou " + super.getQntVezesZerou() + " vez(es)%n" + "==> Maior score: %n"
+		return "\nLista de Jogos: \n+ " + super.getNome() + " - RPG:\n" + "==> Jogou " + super.getQntVezesQueJogou() + " vez(es)\n"
+				+ "==> Zerou " + super.getQntVezesZerou() + " vez(es)\n" + "==> Maior score: "
 				+ super.getMaiorScore();
 
 	}
