@@ -5,7 +5,7 @@ import java.util.HashSet;
 import enums.Jogabilidade;
 import exceptions.NuloVazio;
 /**
- * A classe passa as informacoes do jogo e define qual o comportamento de registrar a jogada para o objeto.
+ * A classe passa as informacoes do jogo e define o comportamento de registrar a jogada para o objeto.
  * @author joseiscj
  *
  */
